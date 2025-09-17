@@ -23,10 +23,7 @@ begin
   -- Implementação vem aqui!
 
   soma <= (a xor b) xor c;
-  carry <= (a and b) or (c and (a xor b))
-
-
-
-
+  vaium <= (a and b) or (c and (a xor b));
+  
 
 end architecture;

@@ -21,4 +21,10 @@ architecture rtl of comparador16 is
 begin
   -- Implementação vem aqui!
 
+  -- zr = '1' se todos os bits forem zero
+  zr <= '1' when (a = "0000000000000000") else '0';
+
+  -- ng = '1' se MSB = 1
+  ng <= a(15);
+
 end architecture;

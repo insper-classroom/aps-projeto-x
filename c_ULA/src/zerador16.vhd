@@ -19,9 +19,9 @@ architecture rtl of zerador16 is
     -- utilizados nesse modulo.
 
 begin
-    with z select
-        y <= "0000000000000000" when '1',
-             a                  when '0',
-             a                  when others;
+  with z select
+    y <= "0000000000000000" when '1',
+        a                  when others;
+
 
 end architecture;

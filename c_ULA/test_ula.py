@@ -49,7 +49,7 @@ def test_inc16():
 
 #@pytest.mark.telemetry_files(source("alu.vhd"),source("zerador16.vhd"), source("inversor16.vhd"), source("add16.vhd"), source("fulladder.vhd"), source("../../b_logComb/src/and16.vhd"), source("comparador16.vhd"), source("../../b_logComb/src/mux16.vhd"))
 def test_alu():
-    run(vhdl_sources=[source("alu.vhd"),source("zerador16.vhd"), source("inversor16.vhd"), source("add16.vhd"), source("fulladder.vhd"), source("../../b_logComb/src/and16.vhd"), source("comparador16.vhd"), source("../../b_logComb/src/mux16.vhd")], toplevel="alu", module="ula_cocotb" , testcase='tb_alu', toplevel_lang="vhdl")
+    run(vhdl_sources=[source("alu.vhd"),source("zerador16.vhd"), source("inversor16.vhd"), source("halfadder.vhd"),source("add16.vhd"), source("fulladder.vhd"), source("../../b_logComb/src/and16.vhd"), source("comparador16.vhd"), source("../../b_logComb/src/mux16.vhd")], toplevel="alu", module="ula_cocotb" , testcase='tb_alu', toplevel_lang="vhdl")
 
 
   

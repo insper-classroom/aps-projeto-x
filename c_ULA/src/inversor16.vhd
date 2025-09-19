@@ -20,9 +20,8 @@ architecture rtl of inversor16 is
 
 begin
 
-    with z select
-        y <= not a       when '1',
-             a           when '0',
-             a           when others;
+with z select
+  y <= not a when '1',
+       a     when others;
 
 end architecture;

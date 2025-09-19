@@ -20,7 +20,8 @@ architecture rtl of zerador16 is
 
 begin
   with z select
-    y <= 0000000000000000 when '1',
-    a     when '0';
+    y <= "0000000000000000" when '1',
+        a                  when others;
+
 
 end architecture;

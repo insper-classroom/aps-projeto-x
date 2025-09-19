@@ -37,7 +37,8 @@ entity ALU is
 			no:    in STD_LOGIC;                     -- inverte o valor da saída
 			zr:    out STD_LOGIC;                    -- setado se saída igual a zero
 			ng:    out STD_LOGIC;                    -- setado se saída é negativa
-			saida: out STD_LOGIC_VECTOR(15 downto 0) -- saída de dados da ALU
+			saida: out STD_LOGIC_VECTOR(15 downto 0)--; -- saída de dados da ALU
+      --estouro: out STD_LOGIC                   --estouro do add
 	);
 end entity;
 
@@ -64,7 +65,8 @@ architecture  rtl OF alu is
 		port(
 			a   :  in STD_LOGIC_VECTOR(15 downto 0);
 			b   :  in STD_LOGIC_VECTOR(15 downto 0);
-			q   : out STD_LOGIC_VECTOR(15 downto 0)
+			q   : out STD_LOGIC_VECTOR(15 downto 0)--;
+      --e   : out STD_LOGIC
 		);
 	end component;
 
@@ -142,6 +144,7 @@ begin
       a => nxout,
       b => nyout,
       q => adderout
+      --e => estouro
     );
 
   --MUX
@@ -171,7 +174,6 @@ begin
       ng => ng
     );
 
-  -- 9 envia pra saída final
   saida <= precomp;
   
 end architecture rtl;

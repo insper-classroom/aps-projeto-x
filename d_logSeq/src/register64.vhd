@@ -22,11 +22,12 @@ architecture arch of Register64 is
 			input:   in STD_LOGIC_VECTOR(31 downto 0);
 			load:    in STD_LOGIC;
 			output: out STD_LOGIC_VECTOR(31 downto 0)
-      );
+		);
 	end component;
 
 begin
 
-
+	RegLow  : Register32 port map(clock => clock, input => input(31 downto 0),  load => load, output => output(31 downto 0));
+	RegHigh : Register32 port map(clock => clock, input => input(63 downto 32), load => load, output => output(63 downto 32));
 
 end architecture;

@@ -22,11 +22,12 @@ architecture arch of Register32 is
 			input:   in STD_LOGIC_VECTOR(15 downto 0);
 			load:    in STD_LOGIC;
 			output: out STD_LOGIC_VECTOR(15 downto 0)
-      );
+		);
 	end component;
 
 begin
 
-
+	RegLow  : Register16 port map(clock => clock, input => input(15 downto 0),  load => load, output => output(15 downto 0));
+	RegHigh : Register16 port map(clock => clock, input => input(31 downto 16), load => load, output => output(31 downto 16));
 
 end architecture;

@@ -57,8 +57,7 @@ def test_register64():
 
 #@pytest.mark.telemetry_files(source('pc.vhd'),source('register16.vhd'),source('register8.vhd'),source('binarydigit.vhd'),source('flipflopd.vhd'),source('../../b_logComb/src/mux2way.vhd'),source('../../b_logComb/src/mux16.vhd'),source('../../c_ULA/src/inc16.vhd'), source('../../c_ULA/src/add16.vhd'), source('../../c_ULA/src/fulladder.vhd'))
 def test_pc():
-    run(vhdl_sources=[source("pc.vhd"),source('register16.vhd'),source('register8.vhd'),source('binarydigit.vhd'),source('flipflopd.vhd'),source('../../b_logComb/src/mux2way.vhd'),source('../../b_logComb/src/mux16.vhd'),source('../../c_ULA/src/inc16.vhd'), source('../../c_ULA/src/add16.vhd'), source('../../c_ULA/src/fulladder.vhd')], toplevel="pc", module="logseq_cocotb" , testcase='tb_pc', toplevel_lang="vhdl")
-
+    run(vhdl_sources=[source("pc.vhd"), source('register16.vhd'), source('register8.vhd'), source('binarydigit.vhd'), source('flipflopd.vhd'), source('../../b_logComb/src/mux2way.vhd'), source('../../b_logComb/src/mux16.vhd'), source('../../c_ULA/src/inc16.vhd'), source('../../c_ULA/src/add16.vhd'), source('../../c_ULA/src/fulladder.vhd'),source('../../c_ULA/src/halfadder.vhd')], toplevel="pc", module="logseq_cocotb" , testcase='tb_pc', toplevel_lang="vhdl")
 
 
 #@pytest.mark.telemetry_files(source('ram8.vhd'),source('register16.vhd'),source('register8.vhd'), source('binarydigit.vhd'),source('flipflopd.vhd'), source('../../b_logComb/src/mux2way.vhd'), source('../../b_logComb/src/mux8way16.vhd'), source('../../b_logComb/src/dmux8way.vhd') )

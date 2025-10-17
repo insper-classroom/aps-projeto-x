@@ -28,10 +28,49 @@ end entity;
 
 architecture arch of ControlUnit is
 
+
+  signal jgt : STD_LOGIC; --  pulo se resultado > 0 (NOT ng AND NOT zr)
+  signal jeq : STD_LOGIC; -- pulo se resultado = 0 (zr)
+  signal jlt : STD_LOGIC; -- pulo se resultado < 0 (ng)
+  signal jump_cond : STD_LOGIC; -- pulo
+
 begin
-  
-  
+    
+
+  loadD <= instruction(17) and instruction(4);
 
 
+  loadM <= instruction(17) and instruction(5);
+
+
+  loadA <= (not instruction(17)) or (instruction(17) and instruction(3));
+
+  muxALUI_A <= not instruction(17);
+  muxAM <= instruction(17) and instruction(13);
+  zx <= instruction(17) and instruction(12);
+    
+
+  nx <= instruction(17) and instruction(11);
+    
+  zy <= instruction(17) and instruction(10);
+    
+
+  ny <= instruction(17) and instruction(9);
+    
+
+  f <= instruction(17) and instruction(8);
+    
+
+  no <= instruction(17) and instruction(7);
+
+    
+
+  jgt <= (not ng) and (not zr); -- Salta se > 0
+  jeq <= zr;                    -- Salta se = 0
+  jlt <= ng;                    -- Salta se < 0
+
+  jump_cond <= (instruction(2) and jlt) or (instruction(1) and jeq) or (instruction(0) and jgt);
+
+  loadPC <= instruction(17) and jump_cond;
 
 end architecture;

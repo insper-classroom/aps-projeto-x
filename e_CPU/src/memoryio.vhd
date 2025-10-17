@@ -3,7 +3,6 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity MemoryIO is
-
    PORT(
         -- Sistema
         CLK_SLOW : IN  STD_LOGIC;
@@ -135,9 +134,14 @@ BEGIN
     ----------------------------------------
     -- Controla LOAD do display e da ram e LED ! --
     ----------------------------------------
-    --LOAD_DISPLAY <= ??????; 
-    --LOAD_RAM     <= ??????; 
-    --LOAD_LED     <= ??????; 
+    LOAD_DISPLAY <= '1' when ( LOAD = '1'
+                               and (ADDRESS(14 downto 13) = "10")
+                               and not ( ADDRESS = "101001011000000"  -- 0x52C0
+                                         or ADDRESS = "101001011000001"  -- 0x52C1
+                                       )
+                             ) else '0'; 
+    LOAD_RAM <= '1' when (LOAD = '1' and ADDRESS(14) = '0') else '0';  
+    LOAD_LED <= '1' when (LOAD = '1' and ADDRESS = "101001011000000") else '0';
 
     ----------------------------------------
     -- SW e LED                           --
@@ -153,7 +157,7 @@ BEGIN
     -- SAIDA do memory I/O                --
     ----------------------------------------
     -- precisar ser: RAM ou SW16
-    -- OUTPUT <= ?????? ;
+    OUTPUT <= SW16  when ( ADDRESS = "101001011000001" ) else OUTPUT_RAM;
 
 
 END logic;

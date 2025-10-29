@@ -8,3 +8,19 @@
 ; Mesma questão da prova
 
 
+leaw $21185, %A
+
+movw (%A), %D
+
+leaw $21184, %A
+
+movw %D, (%A)
+
+leaw $ENDLED1, %A
+
+jmp
+
+ENDLED1:
+
+nop
+

@@ -8,3 +8,35 @@
 ;                                ^            ^
 ;                                | TRUQUE!    | TRUQUE!
 
+
+
+leaw $21185, %A
+
+movw (%A), %D
+
+leaw $7, %A
+
+andw %A, %D, %D
+
+notw %D
+
+leaw $7, %A
+
+andw %A, %D, %D
+
+leaw $248, %A
+
+orw %A, %D, %D
+
+leaw $21184, %A
+
+movw %D, (%A)
+
+leaw $ENDLED, %A
+
+jmp
+
+ENDLED:
+
+nop
+

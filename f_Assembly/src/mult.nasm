@@ -1,18 +1,8 @@
 leaw $1, %A 
 movw (%A), %D
-leaw $ELSE, %A
-jl %D
-nop
-leaw $2, %A
-movw %D, (%A)
-leaw $END, %A
-jmp
-nop
-ELSE:
-notw %D
 leaw $2 %A
 movw %D, (%A)
-END:
+
 
 
 
@@ -41,12 +31,19 @@ movw %D,(%A);    RAM2 = D
 
 
 leaw $SOMA, %A; A=SOMA
-jge %D; Se D >0, ir para soma
+jg %D; Se D >0, ir para soma
 nop
 
 leaw $1, %A
 movw (%A), %D
 leaw $3, %A
 movw %D, (%A)
+
+
+
+
+
+
+
 
 

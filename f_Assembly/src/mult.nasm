@@ -1,19 +1,17 @@
+; Arquivo: Abs.nasm
+; Curso: Elementos de Sistemas
+; Criado por: Luciano Soares
+; Data: 27/03/2017
+
+; Multiplica o valor de RAM[1] com RAM[0] salvando em RAM[3]
+
+
+
+
 leaw $1, %A 
 movw (%A), %D
-leaw $ELSE, %A
-jl %D
-nop
 leaw $2, %A
 movw %D, (%A)
-leaw $END, %A
-jmp
-nop
-ELSE:
-notw %D
-leaw $2 %A
-movw %D, (%A)
-END:
-
 
 
 leaw $0, %A
@@ -41,12 +39,19 @@ movw %D,(%A);    RAM2 = D
 
 
 leaw $SOMA, %A; A=SOMA
-jge %D; Se D >0, ir para soma
+jg %D; Se D >0, ir para soma
 nop
 
 leaw $1, %A
 movw (%A), %D
 leaw $3, %A
 movw %D, (%A)
+
+
+
+
+
+
+
 
 

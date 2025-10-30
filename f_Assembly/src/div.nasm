@@ -8,17 +8,17 @@
 ; divisao para numeros inteiros positivos
 
 
-leaw $1, %A
-
-
-movw (%A), %D
-
 leaw $FIM, %A
 je %D
 nop
 
-
 SUB:
+leaw $4, %A
+movw (%A), %D
+leaw $2, %A
+movw %D, (%A)
+
+
 leaw $1, %A 
 movw (%A), %D
 leaw $0, %A
@@ -27,17 +27,15 @@ subw %A, %D, %D
 leaw $0 %A
 movw %D, (%A)
 
-
-
-
-leaw $2, %A
+leaw $4, %A
 movw (%A), %D
 incw %D
 movw %D, (%A)
 
-
 leaw $0 %A
 movw (%A), %D
 leaw $SUB, %A
-jg %D
+jge %D
 nop
+
+;Multiplicar o inteiro pelo dividendo e subtrair do divisor

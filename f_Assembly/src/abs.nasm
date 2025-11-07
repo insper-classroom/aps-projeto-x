@@ -7,30 +7,17 @@
 
 
 leaw $1, %A 
-
 movw (%A), %D
-
 leaw $ELSE, %A
-
-jl %D
+jl %D; se for menor ou igual a 0, vai a ELSE
 nop
-
-leaw $0, %A
 leaw $0, %A
 movw %D, (%A)
-
-
-
 leaw $END, %A
 jmp
 nop
-
 ELSE:
-
-notw %D
+negw %D
 leaw $0, %A
-
 movw %D, (%A)
-
-
 END:

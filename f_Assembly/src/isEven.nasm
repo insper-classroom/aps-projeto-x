@@ -1,60 +1,70 @@
-; Arquivo: isEven.nasm
-; Curso: Elementos de Sistemas
-; Criado por: Rafael Corsi
-; Data: 28/3/2019
-;
-; Verifica se o valor salvo no endereço RAM[5] é
-; par. Se for verdadeiro, salva 1
-; em RAM[0] e 0 caso contrário.
-
-leaw %0, %A
-movw %A, (%A)
-
-
-leaw $2, %A
-movw %A, %D
-leaw %1, %A
-movw %D, (%A)
-
-
-
-
-leaw $1, %A
-
+leaw $5, %A 
 movw (%A), %D
-
-leaw $FIM, %A
-je %D
+leaw $ENDABS, %A
+jg %D
 nop
 
+negw %D
+leaw $5, %A
+movw %D, (%A)
+
+ENDABS:
+
+;MOVENDO
+leaw $2, %A
+movw %A, %D
+leaw $1, %A
+movw %D, (%A); RAM 1 = 2
+
+
+leaw $5, %A ; RAM 0 = RAM 5
+movw (%A), %D
+leaw $0, %A
+movw %D, (%A)
+;MOVENDO
 
 SUB:
 leaw $1, %A 
 movw (%A), %D
-leaw $5, %A
+leaw $0, %A
 movw (%A), %A
 subw %A, %D, %D
-leaw $5 %A
+leaw $0 %A
 movw %D, (%A)
 
-leaw $5 %A
-movw (%A), %D
+leaw $CHECADOR, %A
+jle %D
+nop
+
 leaw $SUB, %A
-jg %D
+jmp
 nop
 
+CHECADOR:
 
-leaw %5, %A
+leaw $0, %A
 movw (%A), %D
-leaw $FIM, %A
-jne %D
+
+leaw $PAR, %A
+je %D
 nop
 
-leaw %1, %A;
+leaw $0, %A
 movw %A, %D
-leaw $0,%A
+leaw $0, %A
 movw %D, (%A)
 
+leaw $GGG %A
+jmp
+nop
 
+PAR:
+leaw $1, %A
+movw %A, %D
+leaw $0, %A
+movw %D, (%A)
 
-FIM:
+GGG:
+
+;CHECADOR
+

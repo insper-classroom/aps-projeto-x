@@ -27,3 +27,22 @@
 ;  RAM[15] = NULL = 0x0000
 
 
+; Calcula o tamanho de uma string que começa em RAM[8]
+; A string termina em NULL (valor 0)
+; O resultado é armazenado em RAM[0]
+
+        leaw $8, %A           ; endereço inicial da string
+        movw %A, %S           ; %S = ponteiro para a string
+        movw $0, %D           ; %D = contador = 0
+
+LOOP:
+        movw (%S), %A         ; %A = valor atual da string (caractere)
+        jeq END               ; se %A == 0 (NULL), fim da string
+        incw %D               ; incrementa o contador
+        incw %S               ; avança para o próximo caractere
+        jmp LOOP              ; repete o loop
+
+END:
+        leaw $0, %A           ; endereço onde salvar o resultado
+        movw %D, (%A)         ; RAM[0] = contador (tamanho da string)
+        nop

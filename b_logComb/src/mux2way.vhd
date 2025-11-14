@@ -12,4 +12,9 @@ end entity;
 architecture arch of mux2way is
 begin
 
+	with sel select
+    q <= a when '0',
+         b when others;
+
+
 end architecture;
